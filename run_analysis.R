@@ -1,7 +1,7 @@
 ## -------------------------------------------------------------------------
 ## This file contains the R script to run analysis on the dataset collected
 ## by the Samsung Galaxy S smartphone on the subject's activity of daily
-## living. 
+## living as per the course project's criteria.
 ##
 ## author: Andy Y Shiue
 ## --------------------------------------------------------------------------
@@ -14,10 +14,19 @@ Xtrain <- read.table('UCI HAR Dataset/train/X_train.txt', sep="")
 ytrain <- read.table('UCI HAR Dataset/train/y_train.txt', sep="")
 Xtest <- read.table('UCI HAR Dataset/test/y_test.txt', sep="")
 ytest <- read.table('UCI HAR Dataset/test/y_test.txt', sep="")
-activityLables <- read.table('UCI HAR Dataset/activity_labels.txt', sep="")
+activityLabels <- read.table('UCI HAR Dataset/activity_labels.txt', sep="")
+
+colnames(ytrain) <- "activity"
+colnames(ytest) <- "activity"
+colnames(activityLabels) <- c("index", "label")
+
+## merge label with y so we know what activity is performed per record
+activitiesTrain <- merge(ytrain, activityLabels, by.x="activity", by.y="index")
+activitiesTest <- merge(ytest, activityLabels, by.x="activity", by.y="index")
 
 ## combine X and y for train and test
-
+Xytrain <- cbind(ytrain, Xtrain)
+Xytest <- cbind(ytest, Xtest)
 
 ## merge train and test datasets
 
