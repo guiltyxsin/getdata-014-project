@@ -14,20 +14,25 @@ Xtrain <- read.table('UCI HAR Dataset/train/X_train.txt', sep="")
 ytrain <- read.table('UCI HAR Dataset/train/y_train.txt', sep="")
 Xtest <- read.table('UCI HAR Dataset/test/X_test.txt', sep="")
 ytest <- read.table('UCI HAR Dataset/test/y_test.txt', sep="")
-activityLabels <- read.table('UCI HAR Dataset/activity_labels.txt', sep="")
+activityLabels <- read.table('UCI HAR Dataset/activity_labels.txt', sep="", stringsAsFactors=F)
 subjectTrain <- read.table('UCI HAR Dataset/train/subject_train.txt', sep="")
 subjectTest <- read.table('UCI HAR Dataset/test/subject_test.txt', sep="")
+
+## convert to numeric
+ytrain$V1 <- as.numeric(ytrain$V1)
+ytest$V1 <- as.numeric(ytest$V1)
+activityLabels$V1 <- as.numeric(activityLabels$V1)
 
 ## setup column names
 colnames(subjectTrain) <- "subject"
 colnames(subjectTest) <- "subject"
-colnames(ytrain) <- "activity_index"
-colnames(ytest) <- "activity_index"
+colnames(ytrain) <- "index"
+colnames(ytest) <- "index"
 colnames(activityLabels) <- c("index", "activity")
 
 ## merge label with y so we know what activity is performed per record
-activitiesTrain <- merge(ytrain, activityLabels, by.x="activity_index", by.y="index")
-activitiesTest <- merge(ytest, activityLabels, by.x="activity_index", by.y="index")
+activitiesTrain <- merge(ytrain, activityLabels, by="index", sort=F)
+activitiesTest <- merge(ytest, activityLabels, by="index", sort=F)
 
 ## combine subject, activity and measurements for train and test
 trainData <- cbind(subjectTrain, activitiesTrain[2], Xtrain)
@@ -36,6 +41,9 @@ testData <- cbind(subjectTest, activitiesTest[2], Xtest)
 ## merge train and test datasets
 allData <- rbind(trainData, testData)
 
+## clean up used data
+## rm('Xtrain','ytrain','Xtest','ytest','activityLabels','subjectTrain','subjectTest',
+##	'trainData', 'testData','activitiesTrain', 'activitiesTest')
 
 ## ---- Phase 2. get mean and std for each measurement only ---- ##
 ## Note: mean contians '-mean()-' and sd contains '-std()-'
@@ -64,10 +72,16 @@ colindex <- c(1,2, mean_std_plus2)
 filteredData <- allData[, colindex]
 ## update column names
 colnames(filteredData) <- c('subject', 'activity', featuresName[mean_std])
-str(filteredData) ## DEBUG
-
-## 
+## str(filteredData) ## DEBUG
 
 
-## ---- Phase 3.  ---- ##
+## ---- Phase 3. Calculate mean of means and stds in filteredData ---- ##
+## Final tidy dataset will contain average of each variable of each activity
+## of each subject.
+## load dplyr package
+library(plyr)
 
+## calculate mean of means and stds using ddply on top of the filtered data
+## and group by subject and activity. The numcolwise makes the function
+## that calculates on vector to become a column-wise one.
+tidyData <- ddply(filteredData,.(subject,activity),numcolwise(mean))
