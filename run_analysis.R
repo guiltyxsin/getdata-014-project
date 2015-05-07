@@ -7,6 +7,8 @@
 ## --------------------------------------------------------------------------
 
 ## ---- Phase 1. merge train and test data ---- ##
+## load dplyr package
+library(plyr)
 
 ## load files: X_train.txt, y_train.txt, X_test.txt, y_test.txt,
 ## activity_labels.txt, subjets
@@ -31,8 +33,10 @@ colnames(ytest) <- "index"
 colnames(activityLabels) <- c("index", "activity")
 
 ## merge label with y so we know what activity is performed per record
-activitiesTrain <- merge(ytrain, activityLabels, by="index", sort=F)
-activitiesTest <- merge(ytest, activityLabels, by="index", sort=F)
+## activitiesTrain <- merge(ytrain, activityLabels, by="index", sort=F)
+## activitiesTest <- merge(ytest, activityLabels, by="index", sort=F)
+activitiesTrain <- join(ytrain, activityLabels, by ="index", type = "left", match = "all")
+activitiesTest <- join(ytest, activityLabels, by ="index", type = "left", match = "all")
 
 ## combine subject, activity and measurements for train and test
 trainData <- cbind(subjectTrain, activitiesTrain[2], Xtrain)
@@ -53,7 +57,7 @@ allData <- rbind(trainData, testData)
 features <- read.table('UCI HAR Dataset/features.txt', sep="")
 featuresName <- as.vector(features$V2)
 
-## get mean and std features from feature.txt
+## get mean and std features from feature name
 means <- grep(pattern='-mean()', featuresName, fixed=T)
 stds <- grep(pattern='-std()', featuresName, fixed=T)
 
@@ -78,10 +82,12 @@ colnames(filteredData) <- c('subject', 'activity', featuresName[mean_std])
 ## ---- Phase 3. Calculate mean of means and stds in filteredData ---- ##
 ## Final tidy dataset will contain average of each variable of each activity
 ## of each subject.
-## load dplyr package
-library(plyr)
+
 
 ## calculate mean of means and stds using ddply on top of the filtered data
 ## and group by subject and activity. The numcolwise makes the function
 ## that calculates on vector to become a column-wise one.
 tidyData <- ddply(filteredData,.(subject,activity),numcolwise(mean))
+
+## write the tidy dataset to a file.
+write.table(tidyData, file="tidyData.txt", row.names=F)
