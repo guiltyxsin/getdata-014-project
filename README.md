@@ -18,9 +18,10 @@ function in R to source and run the script.
 The script will generate a text file named, tidyData.txt, which 
 contains the result dataset that is submitted for the project and meets 
 the principles of:
-	1. Each variable forms a column.
-	2. Each observation forms a row.
-	3. Each type of observational unit forms a table.
+
+1. Each variable forms a column.
+2. Each observation forms a row.
+3. Each type of observational unit forms a table.
 
 (Hadley Wickham. Tidy data. The Journal of Statistical Software, vol. 
 59, 2014.)
