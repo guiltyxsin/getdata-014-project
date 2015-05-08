@@ -1,14 +1,10 @@
-## --------------------------- ##
 ## getdata-014-project READ ME ##
-## --------------------------- ##
 
 This repository contains the files that implements the solution, 
 run_analysis.R, for the course project for Getting and Cleaning Data 
 course on Coursera.
 
-## ------------ ##
 ## The R script ##
-## ------------ ##
 The R script, run_analysis.R, is the script that implements the solution 
 for the course project. 
 
@@ -30,18 +26,15 @@ the principles of:
 59, 2014.)
 
 
-## ------------- ##
 ## The Code Book ##
-## ------------- ##
 There is a file named Codebook.md which contains the sutdy design
 carried out while implementing the solution and a code book section
 which describes the variables of the tidy dataset that is produced
 by the run_analysis.R script.
 
 
-## ---------------- ##
 ## The tidyData.txt ##
-## ---------------- ##
+
 
 
 
