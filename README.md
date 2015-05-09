@@ -66,9 +66,9 @@ To read the tidy dataset in R, please follow the below steps:
 2. Use the below scripts in R to view the data. Remember to replace XXURLXX
 with the copied URL of the tidy dataset file.
 
-'''
+```
 address <- "XXURLXX"
 address <- sub("^https", "http", address)
 data <- read.table(url(address), header = TRUE)
 View(data)
-'''
+```
