@@ -258,23 +258,3 @@ Average of mean of frequency of body acceleration magnitude.
 
 fBodyAccMag-std():
 Average of standard deviation of frequency of body acceleration magnitude.
-
-fBodyBodyAccJerkMag-mean(): 
-
-
-fBodyBodyAccJerkMag-std():
-
-
-fBodyBodyGyroMag-mean():
-
-
-fBodyBodyGyroMag-std():
-
-
-fBodyBodyGyroJerkMag-mean():
-
-
-fBodyBodyGyroJerkMag-std():
-
-
-

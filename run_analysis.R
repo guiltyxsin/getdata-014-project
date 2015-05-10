@@ -33,8 +33,6 @@ colnames(ytest) <- "index"
 colnames(activityLabels) <- c("index", "activity")
 
 ## merge label with y so we know what activity is performed per record
-## activitiesTrain <- merge(ytrain, activityLabels, by="index", sort=F)
-## activitiesTest <- merge(ytest, activityLabels, by="index", sort=F)
 activitiesTrain <- join(ytrain, activityLabels, by ="index", type = "left", match = "all")
 activitiesTest <- join(ytest, activityLabels, by ="index", type = "left", match = "all")
 
@@ -56,6 +54,10 @@ allData <- rbind(trainData, testData)
 ## load features.txt and get the list of feature names
 features <- read.table('UCI HAR Dataset/features.txt', sep="")
 featuresName <- as.vector(features$V2)
+
+## remove typos with BodyBody
+featuresName <- featuresName[grep(pattern='BodyBody', featuresName,
+					fixed=T, invert=T)]
 
 ## get mean and std features from feature name
 means <- grep(pattern='-mean()', featuresName, fixed=T)
