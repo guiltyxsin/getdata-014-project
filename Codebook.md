@@ -1,7 +1,10 @@
 ## ------------ ##
 ## Study Design ##
 ## ------------ ##
-
+- The tidy dataset is derived from the UCI HAR Dataset.
+- The tidy dataset contains data from both train and test dataset.
+- The tidy dataset is in the wide form. 
+- The tidy dataset column names are in camel case.
 
 
 ## --------- ##
@@ -19,8 +22,8 @@ A string describing the activity the subject is performing
 while the measurement is recorded. There are 6 type of 
 activities:
 	1 WALKING
-	2 WALKING_UPSTAIRS
-	3 WALKING_DOWNSTAIRS
+	2 WALKING UPSTAIRS
+	3 WALKING DOWNSTAIRS
 	4 SITTING
 	5 STANDING
 	6 LAYING
@@ -31,230 +34,230 @@ the feature is a time domain signal where 'f' is frequency domain signal.
 
 Both mean and standard deviation has the unit of the original measurement.
 
-tBodyAcc-mean()-X:
+tBodyAccMeanX:
 Average of mean of body acceleration on X-axis.
 Acceleration is measured in meters per second square (m/s^2).
 
-tBodyAcc-mean()-Y:
+tBodyAccMeanY:
 Average of mean of body acceleration on Y-axis.
 Acceleration is measured in meters per second square (m/s^2).
 
-tBodyAcc-mean()-Z:
+tBodyAccMeanZ:
 Average of mean of body acceleration on Z-axis.
 Acceleration is measured in meters per second square (m/s^2).
 
-tBodyAcc-std()-X:
+tBodyAccStdX:
 Average of standard deviation of body acceleration on X-axis.
 Acceleration is measured in meters per second square (m/s^2).
 
-tBodyAcc-std()-Y:
+tBodyAccStdY:
 Average of standard deviation of body acceleration on Y-axis.
 Acceleration is measured in meters per second square (m/s^2).
 
-tBodyAcc-std()-Z:
+tBodyAccStdZ:
 Average of standard deviation of body acceleration on Z-axis.
 Acceleration is measured in meters per second square (m/s^2).
 
-tGravityAcc-mean()-X:
+tGravityAccMeanX:
 Average of mean of gravitational acceleration on X-axis.
 Acceleration is measured in meters per second square (m/s^2).
 
-tGravityAcc-mean()-Y:
+tGravityAccMeanY:
 Average of mean of gravitational acceleration on Y-axis.
 Acceleration is measured in meters per second square (m/s^2).
 
-tGravityAcc-mean()-Z:
+tGravityAccMeanZ:
 Average of mean of gravitational acceleration on Z-axis.
 Acceleration is measured in meters per second square (m/s^2).
 
-tGravityAcc-std()-X:
+tGravityAccStdX:
 Average of standard deviation of gravitational acceleration on X-axis.
 Acceleration is measured in meters per second square (m/s^2).
 
-tGravityAcc-std()-Y:
+tGravityAccStdY:
 Average of standard deviation of gravitational acceleration on Y-axis.
 Acceleration is measured in meters per second square (m/s^2).
 
-tGravityAcc-std()-Z:
+tGravityAccStdZ:
 Average of standard deviation of gravitational acceleration on Z-axis.
 Acceleration is measured in meters per second square (m/s^2).
 
-tBodyAccJerk-mean()-X:
+tBodyAccJerkMeanX:
 Average of mean of body acceleration jerk on X-axis.
 Jerk is the rate of change of acceleration and has a unit of
 meters per second cubic (m/s^3).
 
-tBodyAccJerk-mean()-Y:
+tBodyAccJerkMeanY:
 Average of mean of body acceleration jerk on Y-axis.
 Jerk is the rate of change of acceleration and has a unit of 
 meters per second cubic (m/s^3).
 
-tBodyAccJerk-mean()-Z:
+tBodyAccJerkMeanZ:
 Average of mean of body acceleration jerk on Z-axis.
 Jerk is the rate of change of acceleration and has a unit of 
 meters per second cubic (m/s^3).
 
-tBodyAccJerk-std()-X:
+tBodyAccJerkStdX:
 Average of standard deviation of body acceleration jerk on X-axis.
 Jerk is the rate of change of acceleration and has a unit of 
 meters per second cubic (m/s^3).
 
-tBodyAccJerk-std()-Y:
+tBodyAccJerkStdY:
 Average of standard deviation of body acceleration jerk on Y-axis.
 Jerk is the rate of change of acceleration and has a unit of 
 meters per second cubic (m/s^3).
 
-tBodyAccJerk-std()-Z:
+tBodyAccJerkStdZ:
 Average of standard deviation of body acceleration jerk on Z-axis.
 Jerk is the rate of change of acceleration and has a unit of 
 meters per second cubic (m/s^3).
 
-tBodyGyro-mean()-X:
+tBodyGyroMeanX:
 Average of mean of body gyro on X-axis.
 Gryo is the measure of rotational speed with unit degree per second.
 
-tBodyGyro-mean()-Y:
+tBodyGyroMeanY:
 Average of mean of body gyro on Y-axis.
 Gryo is the measure of rotational speed with unit degree per second.
 
-tBodyGyro-mean()-Z:
+tBodyGyroMeanZ:
 Average of mean of body gyro on Z-axis.
 Gryo is the measure of rotational speed with unit degree per second.
 
-tBodyGyro-std()-X:
+tBodyGyroStdX:
 Average of standard deviation of body gyro on X-axis.
 Gryo is the measure of rotational speed with unit degree per second.
 
-tBodyGyro-std()-Y:
+tBodyGyroStdY:
 Average of standard deviation of body gyro on Y-axis.
 Gryo is the measure of rotational speed with unit degree per second.
 
-tBodyGyro-std()-Z:
+tBodyGyroStdZ:
 Average of standard deviation of body gyro on Z-axis.
 Gryo is the measure of rotational speed with unit degree per second.
 
-tBodyGyroJerk-mean()-X:
+tBodyGyroJerkMeanX:
 Average of mean of body gyro jerk on X-axis.
 Gryo Jerk is the measure of rate of change of rotational speed with 
 unit degree per second square.
 
-tBodyGyroJerk-mean()-Y:
+tBodyGyroJerkMeanY:
 Average of mean of body gyro jerk on Y-axis.
 Gryo Jerk is the measure of rate of change of rotational speed with
 unit degree per second square.
 
-tBodyGyroJerk-mean()-Z:
+tBodyGyroJerkMeanZ:
 Average of mean of body gyro jerk on Z-axis.
 Gryo Jerk is the measure of rate of change of rotational speed with
 unit degree per second square.
 
-tBodyGyroJerk-std()-X:
+tBodyGyroJerkStdX:
 Average of standard deviation of body gyro jerk on X-axis.
 Gryo Jerk is the measure of rate of change of rotational speed with
 unit degree per second square.
 
-tBodyGyroJerk-std()-Y:
+tBodyGyroJerkStdY:
 Average of standard deviation of body gyro jerk on Y-axis.
 Gryo Jerk is the measure of rate of change of rotational speed with
 unit degree per second square.
 
-tBodyGyroJerk-std()-Z:
+tBodyGyroJerkStdZ:
 Average of standard deviation of body gyro jerk on Z-axis.
 Gryo Jerk is the measure of rate of change of rotational speed with
 unit degree per second square.
 
-tBodyAccMag-mean():
+tBodyAccMagMean:
 Average of mean of body acceleration magnitude.
 
-tBodyAccMag-std():
+tBodyAccMagStd:
 Average of standard deviation of body acceleration magnitude. 
 
-tGravityAccMag-mean():
+tGravityAccMagMean:
 Average of mean of gravitational acceleration magnitude.
 
-tGravityAccMag-std():
+tGravityAccMagStd:
 Average of standard deviation of gravitational acceleration magnitude.
 
-tBodyAccJerkMag-mean(): 
+tBodyAccJerkMagMean: 
 Average of mean of body acceleration jerk magnitude.
 
-tBodyAccJerkMag-std():
+tBodyAccJerkMagStd:
 Average of standard deviation of body acceleration jerk magnitude.
 
-tBodyGyroMag-mean():
+tBodyGyroMagMean:
 Average of mean of body gyro magnitude.
 
-tBodyGyroMag-std():
+tBodyGyroMagStd:
 Average of standard deviation of body gyro magnitude.
 
-tBodyGyroJerkMag-mean():
+tBodyGyroJerkMagMean:
 Average of mean of body gyro jerk magnitude.
 
-tBodyGyroJerkMag-std():
+tBodyGyroJerkMagStd:
 Average of standard deviation of body gyro jerk magnitude.
 
-fBodyAcc-mean()-X:
+fBodyAccMeanX:
 Average of mean of frequency of body acceleration on X-axis.
 Frequency is measured in Hz.
 
-fBodyAcc-mean()-Y:
+fBodyAccMeanY:
 Average of mean of frequency of body acceleration on Y-axis.
 Frequency is measured in Hz.
 
-fBodyAcc-mean()-Z:
+fBodyAccMeanZ:
 Average of mean of frequency of body acceleration on Z-axis.
 Frequency is measured in Hz.
 
-fBodyAcc-std()-X:
+fBodyAccStdX:
 Average of standard deviation of frequency of body acceleration on X-axis. 
 Frequency is measured in Hz.
 
-fBodyAcc-std()-Y:
+fBodyAccStdY:
 Average of standard deviation of frequency of body acceleration on Y-axis. 
 Frequency is measured in Hz.
 
-fBodyAcc-std()-Z:
+fBodyAccStdZ:
 Average of standard deviation of frequency of body acceleration on Z-axis. 
 Frequency is measured in Hz.
 
-fBodyAccJerk-mean()-X:
+fBodyAccJerkMeanX:
 Average of mean of frequency of body acceleration jerk on X-axis.
 
-fBodyAccJerk-mean()-Y:
+fBodyAccJerkMeanY:
 Average of mean of frequency of body acceleration jerk on Y-axis.
 
-fBodyAccJerk-mean()-Z:
+fBodyAccJerkMeanZ:
 Average of mean of frequency of body acceleration jerk on Z-axis.
 
-fBodyAccJerk-std()-X:
+fBodyAccJerkStdX:
 Average of standard deviation of frequency of body acceleration jerk on X-axis.
 
-fBodyAccJerk-std()-Y:
+fBodyAccJerkStdY:
 Average of standard deviation of frequency of body acceleration jerk on Y-axis.
 
-fBodyAccJerk-std()-Z:
+fBodyAccJerkStdZ:
 Average of standard deviation of frequency of body acceleration jerk on Z-axis.
 
-fBodyGyro-mean()-X:
+fBodyGyroMeanX:
 Average of mean of frequency of body gyro on X-axis.
 
-fBodyGyro-mean()-Y:
+fBodyGyroMeanY:
 Average of mean of frequency of body gyro on Y-axis.
 
-fBodyGyro-mean()-Z:
+fBodyGyroMeanZ:
 Average of mean of frequency of body gyro on Z-axis.
 
-fBodyGyro-std()-X:
+fBodyGyroStdX:
 Average of standard deviation of frequency of body gyro on X-axis.
 
-fBodyGyro-std()-Y:
+fBodyGyroStdY:
 Average of standard deviation of frequency of body gyro on Y-axis.
 
-fBodyGyro-std()-Z:
+fBodyGyroStdZ:
 Average of standard deviation of frequency of body gyro on Z-axis.
 
-fBodyAccMag-mean():
+fBodyAccMagMean:
 Average of mean of frequency of body acceleration magnitude.
 
-fBodyAccMag-std():
+fBodyAccMagStd:
 Average of standard deviation of frequency of body acceleration magnitude.

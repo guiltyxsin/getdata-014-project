@@ -20,7 +20,7 @@ activityLabels <- read.table('UCI HAR Dataset/activity_labels.txt', sep="", stri
 subjectTrain <- read.table('UCI HAR Dataset/train/subject_train.txt', sep="")
 subjectTest <- read.table('UCI HAR Dataset/test/subject_test.txt', sep="")
 
-## convert to numeric
+## convert to numeric to avoid comparison issue
 ytrain$V1 <- as.numeric(ytrain$V1)
 ytest$V1 <- as.numeric(ytest$V1)
 activityLabels$V1 <- as.numeric(activityLabels$V1)
@@ -31,6 +31,9 @@ colnames(subjectTest) <- "subject"
 colnames(ytrain) <- "index"
 colnames(ytest) <- "index"
 colnames(activityLabels) <- c("index", "activity")
+
+## replace "_" with whitespace for the activity labels
+activityLabels[[2]] <- sub("_", " ", activityLabels[[2]])
 
 ## merge label with y so we know what activity is performed per record
 activitiesTrain <- join(ytrain, activityLabels, by ="index", type = "left", match = "all")
@@ -44,8 +47,8 @@ testData <- cbind(subjectTest, activitiesTest[2], Xtest)
 allData <- rbind(trainData, testData)
 
 ## clean up used data
-## rm('Xtrain','ytrain','Xtest','ytest','activityLabels','subjectTrain','subjectTest',
-##	'trainData', 'testData','activitiesTrain', 'activitiesTest')
+rm('Xtrain','ytrain','Xtest','ytest','activityLabels','subjectTrain','subjectTest',
+	'trainData', 'testData','activitiesTrain', 'activitiesTest')
 
 ## ---- Phase 2. get mean and std for each measurement only ---- ##
 ## Note: mean contians '-mean()-' and sd contains '-std()-'
@@ -76,9 +79,19 @@ colindex <- c(1,2, mean_std_plus2)
 
 ## use the feature numbers to filter out unwanted data columns
 filteredData <- allData[, colindex]
-## update column names
+
+## update feature names to remove "()", "-" and make them camel case
+featuresName <- sapply(featuresName, sub, pattern="()", replacement="",
+			fixed=T, USE.NAMES=F)
+featuresName <- sapply(featuresName, sub, pattern="-m", replacement="M",
+                        fixed=T, USE.NAMES=F)
+featuresName <- sapply(featuresName, sub, pattern="-s", replacement="S",
+                        fixed=T, USE.NAMES=F)
+featuresName <- sapply(featuresName, sub, pattern="-", replacement="",
+                        fixed=T, USE.NAMES=F)
+
+## update column names with the feature names
 colnames(filteredData) <- c('subject', 'activity', featuresName[mean_std])
-## str(filteredData) ## DEBUG
 
 
 ## ---- Phase 3. Calculate mean of means and stds in filteredData ---- ##
@@ -93,3 +106,7 @@ tidyData <- ddply(filteredData,.(subject,activity),numcolwise(mean))
 
 ## write the tidy dataset to a file.
 write.table(tidyData, file="tidyData.txt", row.names=F)
+
+## clean up used data
+rm("allData", "colindex", "features", "featuresName", "filteredData", "means",
+	"mean_std","mean_std_plus2", "stds", "tidyData")
